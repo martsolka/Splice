@@ -1,0 +1,181 @@
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hero section ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.hero {
+  background-image: url("../img/hero-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  // .hero__container
+
+  &__container {
+    margin-top: 140px;
+    padding-bottom: 15px;
+  }
+
+  // .hero__title
+
+  &__title {
+    max-width: 513px;
+    @include font($size: 72px, $lineHeight: 72px, $letterSpacing: 1.08px);
+    margin-bottom: 26px;
+  }
+
+  // .hero__text
+
+  &__text {
+    max-width: 412px;
+    @include font($size: 20px, $lineHeight: 24px);
+    margin-bottom: 44px;
+  }
+
+  // .hero__btn
+
+  &__btn {
+    padding: 16px 32px;
+    margin-bottom: 150px;
+  }
+
+  // .hero__learn-more
+
+  &__learn-more {
+    @include grid($row-gap: 17px);
+    transition: all $transition;
+    &:hover {
+      transform: translateY(5px) scale(1.05);
+    }
+  }
+}
+
+.trial-row {
+  padding: 11px;
+  background-color: $accent;
+  @include flex($align: center, $justify: center, $wrap: wrap);
+
+  // .trial-row__text
+
+  &__text {
+    width: 640px;
+    text-align: center;
+    line-height: toRem(24px);
+  }
+
+  // .trial-row__link
+
+  &__link {
+    line-height: toRem(24px);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ feature sections ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.feature {
+  margin-top: 95px;
+  // .feature__container
+
+  &__container {
+    @include flex($align: center, $justify: space-between);
+    column-gap: 20px;
+  }
+  // .feature__content-col
+
+  &__content-col {
+    max-width: 441px;
+  }
+
+  // .feature__image-col
+
+  &__image-col {
+    flex: 0 1 580px;
+  }
+
+  & .section-title {
+    margin-bottom: 5px;
+  }
+
+  & .section-subtitle {
+    margin-bottom: 12px;
+  }
+
+  &:nth-child(odd) &__container {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+  & .section-text {
+    margin-bottom: 18px;
+  }
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ creators section ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.creators {
+  padding: 121px 0;
+
+  // .creators__list
+
+  &__list {
+    margin-top: 24px;
+    @include flex($align: stretch);
+    @include margin-except-last-child(11px);
+  }
+
+  // .creators__card
+
+  &__card {
+    background-color: $light;
+    border-radius: $border-radius;
+    width: calc(100% / 3);
+    padding: 32px;
+  }
+
+  // .creators__img-wrap
+
+  &__img-wrap {
+    max-width: 223px;
+    max-height: 223px;
+    border-radius: 50%;
+    overflow: hidden;
+    @include center-horizontal($mb: 30px);
+  }
+
+  // .creators__review
+
+  &__review {
+    @include font(
+      $size: 20px,
+      $lineHeight: 25px,
+      $letterSpacing: 0.3px,
+      $color: $black
+    );
+    margin-bottom: 16px;
+  }
+
+  // .creators__name
+
+  &__name {
+    @include font($size: 14px, $lineHeight: 20px, $color: $secondary);
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start now section ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.start-now {
+  background-image: url("../img/cta-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  // .start-now__container
+
+  &__container {
+    padding-top: 283px;
+    padding-bottom: 288px;
+    text-align: center;
+  }
+
+  // .start-now__text
+
+  &__text {
+    @include font($size: 54px, $lineHeight: 60px);
+    margin-bottom: 57px;
+  }
+}

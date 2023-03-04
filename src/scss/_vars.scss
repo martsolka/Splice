@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+$font-family: "Roboto", sans-serif;
+
+$black: #000000;
+$white: #ffffff;
+$light: #f8f8f8;
+$bg: #121214;
+$accent: #0033ff;
+$primary: #a6a8ad;
+$secondary: #767676;
+
+$container-width: 1104px;
+$padding-y: 48px;
+$border-radius: 8px;
+$transition: 0.3s ease-in-out;
+
+$baseFontSize: 16px;
+
+@function toRem($value) {
+  $valueInRem: $value;
+  @if unit($value) == "px" {
+    $valueInRem: calc($value / $baseFontSize * 1rem);
+  }
+  @return $valueInRem;
+}
+
+@mixin font(
+  $size: null,
+  $lineHeight: null,
+  $letterSpacing: null,
+  $color: null,
+  $fontWeight: null,
+  $fontFamily: null
+) {
+  @if $size {
+    font-size: toRem($size);
+  }
+
+  @if $lineHeight {
+    line-height: toRem($lineHeight);
+  }
+
+  @if $letterSpacing {
+    letter-spacing: toRem($letterSpacing);
+  }
+
+  @if $color {
+    color: $color;
+  }
+
+  @if $fontWeight {
+    font-weight: $fontWeight;
+  }
+
+  @if $fontFamily {
+    font-family: $fontFamily;
+  }
+}
+
+@mixin flex(
+  $direction: null,
+  $justify: null,
+  $align: null,
+  $align-content: null,
+  $wrap: null
+) {
+  display: flex;
+  @if $direction {
+    flex-direction: $direction;
+  }
+  @if $justify {
+    justify-content: $justify;
+  }
+  @if $align {
+    align-items: $align;
+  }
+  @if $align-content {
+    align-content: $align-content;
+  }
+  @if $wrap {
+    flex-wrap: $wrap;
+  }
+}
+
+@mixin grid(
+  $columns: auto,
+  $rows: auto,
+  $row-gap: 0,
+  $col-gap: 0,
+  $justify: center,
+  $align: center
+) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-template-rows: repeat($rows, auto);
+  row-gap: $row-gap;
+  column-gap: $col-gap;
+  justify-items: $justify;
+}
+
+@mixin center-horizontal($mt: 0, $mb: 0) {
+  margin-top: $mt;
+  margin-bottom: $mb;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+$breakpoints: (
+  "xs": 320px,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1400px,
+);
+
+@mixin media-query($breakpoint, $type: "desktop-first") {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @if $type == "desktop-first" {
+      @media (max-width: calc(map-get($breakpoints, $breakpoint) - 1px)) {
+        @content;
+      }
+    } @else if $type == "mobile-first" {
+      @media (min-width: map-get($breakpoints, $breakpoint)) {
+        @content;
+      }
+    } @else {
+      @error "Invalid value for $type: '#{$type}'. Allowed values are 'desktop-first' or 'mobile-first'.";
+    }
+  } @else {
+    @error "Breakpoint '#{$breakpoint}' not found in map '$breakpoints'.";
+  }
+}
+
+@mixin margin-except-last-child($margin) {
+  > * {
+    margin-right: $margin;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -1,0 +1,134 @@
+.header {
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  background-color: $bg;
+  z-index: 50;
+  // .header__container
+
+  &__container {
+    @include flex($align: center, $justify: space-between);
+    @include center-horizontal;
+    max-width: 1200px + 20px + 23px;
+    padding-left: 23px;
+    padding-right: 20px;
+    min-height: 71px;
+  }
+
+  // .header__logo-link
+
+  &__logo-link {
+    display: block;
+    margin-right: 29px;
+    width: 97px;
+    height: 30px;
+  }
+
+  // .header__nav
+
+  &__nav {
+    @include flex($align: center, $justify: space-between);
+    @include media-query("lg") {
+      @include flex($justify: flex-end);
+    }
+  }
+}
+.nav {
+  position: relative;
+  flex-grow: 1;
+  // .nav__list
+
+  &__list {
+    @include flex($align: center);
+    @include margin-except-last-child(20px);
+    @include media-query("lg") {
+      position: absolute;
+      @include flex($direction: column);
+      display: none;
+    }
+  }
+
+  // .nav__link
+
+  &__link {
+    display: inline-block;
+    color: $primary;
+    line-height: toRem(20px);
+    transition: all $transition;
+
+    &:hover,
+    &--active {
+      color: $light;
+      transform: scale(1.05);
+    }
+
+    // .nav__link--signup
+
+    &--signup {
+      padding: 8px 21px;
+      border: 1px solid $white;
+      border-radius: 32px;
+      margin-left: 20px;
+      background-color: $white;
+      border-color: $white;
+      color: $bg;
+      &:hover {
+        background-color: transparent;
+        color: $white;
+      }
+    }
+  }
+}
+.burger {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  margin-left: 30px;
+  display: none;
+
+  span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $white;
+    transition: all $transition;
+
+    &:nth-child(1) {
+      top: 20%;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+    }
+
+    &:nth-child(3) {
+      top: 80%;
+    }
+  }
+
+  &.active {
+    span {
+      &:nth-child(1) {
+        transform: rotate(45deg);
+        top: 50%;
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 50%;
+      }
+    }
+  }
+
+  @include media-query("lg") {
+    display: block;
+  }
+}

@@ -1,0 +1,6 @@
+Create header using html and bem naming. Add style using SCSS. 
+Header include container and container contains:
+- link with png logo(97x30px) in left, 
+- navigation menu with links(Sounds, Skills, Plugins, Studio, Community, Blog, Pricing) is 29px after logo and 20px among ourselves,
+- two link button(Login, Sign up) in right side and 20px among ourselves.
+Make header responsive adding burger menu.

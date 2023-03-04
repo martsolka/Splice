@@ -1,0 +1,58 @@
+body {
+  @include font(
+    $size: 16px,
+    $fontWeight: 400,
+    $color: $white,
+    $fontFamily: $font-family
+  );
+  background-color: $bg;
+  height: 100%;
+}
+
+.wrapper {
+  @include flex($direction: column);
+  height: 100%;
+  & * {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+[class*="container"] {
+  @include center-horizontal;
+  padding: 0 $padding-y;
+  max-width: $container-width + $padding-y * 2;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  line-height: toRem(24px);
+  text-align: center;
+  background-color: $accent;
+  color: $white;
+  border-radius: $border-radius;
+  transition: all $transition;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.section-title {
+  @include font(
+    $size: 12px,
+    $lineHeight: 14px,
+    $letterSpacing: 0.12px,
+    $fontWeight: 400,
+    $color: $primary
+  );
+  text-transform: uppercase;
+}
+
+.section-subtitle {
+  @include font($size: 28px, $lineHeight: 36px);
+}
+
+.section-text {
+  line-height: toRem(24px);
+}
